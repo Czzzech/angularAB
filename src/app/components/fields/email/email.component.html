@@ -1,0 +1,22 @@
+<div [formGroup]="emailGroup" class="form-group">
+  <input
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          formControlName="email"
+  >
+</div>
+<ul *ngIf="hasErrors()" class="list-unstyled text-left">
+  <li
+          [ngStyle]="{'color' : valid('required') ? 'green' : 'red'}"
+  ><i
+          class="fa"
+          [ngClass]="{'fa-times' : !valid('required'), 'fa-check' : valid('required')}"
+  ></i> Email must be not empty!</li>
+  <li
+          [ngStyle]="{'color' : valid('pattern') ? 'green' : 'red'}"
+  ><i
+          class="fa"
+          [ngClass]="{'fa-times' : !valid('pattern'), 'fa-check' : valid('pattern')}"
+  ></i> Email must be something like: xx@xx.xx!</li>
+</ul>

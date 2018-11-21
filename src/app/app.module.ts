@@ -15,6 +15,13 @@ import { FormComponent } from './components/form/form.component';
 import { TextFieldComponent } from './components/fields/text-field/text-field.component';
 import { DateFieldComponent } from './components/fields/date-field/date-field.component';
 import { BudgetsPreviewComponent } from './components/budgets-preview/budgets-preview.component';
+import { RouterModule } from "@angular/router";
+import { appRoutes } from "./routes";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AngularFontAwesomeModule } from "angular-font-awesome";
+import { EmailComponent } from './components/fields/email/email.component';
+import { PasswordComponent } from './components/fields/password/password.component';
+import { ForgotComponent } from './components/forgot/forgot.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +36,19 @@ import { BudgetsPreviewComponent } from './components/budgets-preview/budgets-pr
     FormComponent,
     TextFieldComponent,
     DateFieldComponent,
-    BudgetsPreviewComponent
+    BudgetsPreviewComponent,
+    EmailComponent,
+    PasswordComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

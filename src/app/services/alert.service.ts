@@ -10,8 +10,8 @@ export class AlertService {
   static INFO = 'info';
   static SUCCESS = 'success';
 
-  static send(){
-
+  static error(error){
+    console.log(error);
   }
 
   constructor() { }
