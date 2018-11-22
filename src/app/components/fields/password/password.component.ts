@@ -8,9 +8,9 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class PasswordComponent implements OnInit {
 
-
   passwordGroup: FormGroup;
   password: FormControl;
+  
   @Input('form') parentGroup : FormGroup;
   constructor() { }
 
