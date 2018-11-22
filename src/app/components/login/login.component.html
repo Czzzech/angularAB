@@ -5,7 +5,13 @@
       <form [formGroup]="form">
         <app-email [form]="form"></app-email>
         <app-password [form]="form"></app-password>
-        <input type=submit class="btn btn-success" (click)="login()" value="Login" [disabled]="!form.valid"/>
+        <input
+                type=submit
+                class="btn"
+                [ngClass]="{'btn-primary' : form.valid, 'btn-secondary' : !form.valid}"
+                (click)="login()"
+                value="Login"
+                [disabled]="!form.valid"/>
       </form>
     </div>
   </div>
