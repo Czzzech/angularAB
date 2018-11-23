@@ -1,10 +1,19 @@
-<div [formGroup]="emailGroup" class="form-group">
-  <input
-          type="email"
-          class="form-control"
-          placeholder="Email"
-          formControlName="email"
-  >
+<div [formGroup]="emailGroup" class="form-group input-group mb-3">
+
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="iconEmail" [ngClass]="{'valid-icon': noErrors(), 'invalid-icon' : hasErrors()}">
+        <i class="fa fa-at"></i>
+      </span>
+    </div>
+    <input
+            type="text"
+            class="form-control"
+            placeholder="Email"
+            aria-label="Email"
+            aria-describedby="iconEmail"
+            formControlName="email"
+            [ngClass]="{'valid': noErrors(), 'invalid' : hasErrors()}"
+    >
 </div>
 <ul *ngIf="hasErrors()" class="list-unstyled text-left">
   <li

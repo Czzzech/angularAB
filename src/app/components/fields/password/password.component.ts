@@ -10,7 +10,7 @@ export class PasswordComponent implements OnInit {
 
   passwordGroup: FormGroup;
   password: FormControl;
-  
+
   @Input('form') parentGroup : FormGroup;
   constructor() { }
 
@@ -29,6 +29,10 @@ export class PasswordComponent implements OnInit {
 
   hasErrors(){
     return this.password.errors && (this.password.dirty || this.password.touched);
+  }
+
+  noErrors(){
+    return !this.password.errors && (this.password.dirty || this.password.touched);
   }
 
   valid(key?: string){

@@ -29,6 +29,10 @@ export class EmailComponent implements OnInit {
     return this.email.errors && (this.email.dirty || this.email.touched);
   }
 
+  noErrors(){
+    return !this.email.errors && (this.email.dirty || this.email.touched);
+  }
+
   valid(key?: string){
     switch (key){
       case 'pattern':
