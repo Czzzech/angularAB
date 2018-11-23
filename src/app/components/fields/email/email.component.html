@@ -1,7 +1,12 @@
 <div [formGroup]="emailGroup" class="form-group input-group mb-3">
 
     <div class="input-group-prepend">
-      <span class="input-group-text" id="iconEmail" [ngClass]="{'valid-icon': noErrors(), 'invalid-icon' : hasErrors()}">
+      <span
+              class="input-group-text"
+              id="iconEmail"
+              [ngClass]="{'valid-icon': noErrors(), 'invalid-icon' : hasErrors()}"
+              title="Email"
+      >
         <i class="fa fa-at"></i>
       </span>
     </div>
