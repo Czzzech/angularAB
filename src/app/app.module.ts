@@ -23,6 +23,8 @@ import { EmailComponent } from './components/fields/email/email.component';
 import { PasswordComponent } from './components/fields/password/password.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { MainComponent } from './components/main/main.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { BudgetCardComponent } from './components/budget-card/budget-card.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { MainComponent } from './components/main/main.component';
     EmailComponent,
     PasswordComponent,
     ForgotComponent,
-    MainComponent
+    MainComponent,
+    AdminComponent,
+    BudgetCardComponent
   ],
   imports: [
     BrowserModule,

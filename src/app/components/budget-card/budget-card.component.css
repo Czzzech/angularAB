@@ -1,0 +1,10 @@
+.budget-card{
+    width: 350px;
+    margin: 5px;
+    box-shadow: 0px 0px 5px rgba(14, 38, 162, 0.29);
+    border: 0.1px solid rgb(14, 38, 162);
+}
+
+.btn {
+    width: 100%;
+}

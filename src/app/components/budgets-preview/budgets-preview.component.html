@@ -1,3 +1,7 @@
-<p>
-  budgets-preview works!
-</p>
+<div
+        class="row justify-content-center">
+        <app-budget-card
+            *ngFor="let budget of budgets"
+            [budget]="budget"
+        ></app-budget-card>
+</div>

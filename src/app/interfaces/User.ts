@@ -3,10 +3,10 @@ export interface User{
     password    : string,
     email       : string,
     phone       : string,
-    created     : string,
-    lastVisit   : string,
+    created     : Date,
+    lastVisit   : Date,
     permissions : object,
     payer       : boolean,
-    birthDate   : string,
-    timezone    : string
+    birthDate   : Date,
+    timeZone    : string
 }
