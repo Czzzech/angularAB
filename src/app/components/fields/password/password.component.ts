@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -10,20 +10,35 @@ export class PasswordComponent implements OnInit {
 
   passwordGroup: FormGroup;
   password: FormControl;
+  passwordConfirm: FormControl;
 
   @Input('form') parentGroup : FormGroup;
+  @Input('passwordConfirm') needConfirm : boolean;
+
+  @Output('equals') equalsEmitter : EventEmitter<boolean> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
     this.password = new FormControl(
         "", [
           Validators.required,
-          Validators.minLength(6)
+          Validators.minLength(8)
         ]
     );
+
     this.passwordGroup = new FormGroup({
-      password: this.password
+      password: this.password,
     });
+    if(this.needConfirm) {
+      this.passwordConfirm = new FormControl(
+          "", [
+            Validators.required,
+            Validators.minLength(8)
+          ]
+      );
+      this.passwordGroup.addControl('passwordConfirm', this.passwordConfirm)
+    }
     this.parentGroup.addControl('passwordGroup', this.passwordGroup);
   }
 
@@ -33,6 +48,20 @@ export class PasswordComponent implements OnInit {
 
   noErrors(){
     return !this.password.errors && (this.password.dirty || this.password.touched);
+  }
+
+  emitEqual(){
+    this.equalsEmitter.emit(this.confirmEquals());
+  }
+
+  confirmEquals(){
+    if(!this.needConfirm) return true;
+    return (this.password.value.length > 0) && (this.password.value === this.passwordConfirm.value) && (this.password.dirty || this.password.touched);
+  }
+
+  confirmNotEquals(){
+    if(!this.needConfirm) return false;
+    return !(this.password.value === this.passwordConfirm.value) && (this.password.dirty || this.password.touched);
   }
 
   valid(key?: string){

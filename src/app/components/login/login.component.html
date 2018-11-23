@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="login-form">
+  <div class="register-form">
     <div class="main-div">
       <h1 class="display-3">AGILE BUDGET</h1>
       <form [formGroup]="form">
@@ -13,6 +13,7 @@
                 value="Login"
                 [disabled]="!form.valid"/>
       </form>
+      <button class="btn btn-primary" routerLink="/register">Sign In</button>
     </div>
   </div>
 </div>

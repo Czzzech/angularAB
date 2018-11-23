@@ -1,11 +1,18 @@
 <div class="container">
   <div class="login-form">
     <div class="main-div">
-      <form>
-        <app-email (input)="setEmail($event)"></app-email>
-        <app-password (input)="setPassword($event)"></app-password>
-        <a class="btn btn-primary" (click)="register()">Register</a>
-        <a class="btn btn-primary" routerLink="/login">I'm already registered</a>
+      <h1 class="display-3">AGILE BUDGET</h1>
+      <h1 class="display-6">SIGN IN</h1>
+      <form [formGroup]="form">
+        <app-email [form]="form"></app-email>
+        <app-password [form]="form" [passwordConfirm]="true" (equals)="setEqual($event)"></app-password>
+        <input
+                type=submit
+                class="btn"
+                [ngClass]="{'btn-primary' : form.valid && equalPasswords, 'btn-secondary' : !form.valid || !equalPasswords}"
+                (click)="signIn()"
+                value="Sign In"
+                [disabled]="!form.valid && equalPasswords"/>
       </form>
     </div>
   </div>
