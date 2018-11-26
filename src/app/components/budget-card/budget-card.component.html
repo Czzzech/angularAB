@@ -1,6 +1,6 @@
 <div class="col-lg-6">
   <div class="card text-white bg-dark mb-3 budget-card">
-    <div class="card-header text-warning text-center font-weight-bold">{{budget.name}} {{budget.id}}</div>
+    <div class="card-header text-warning text-center font-weight-bold">{{budget.title}}</div>
     <div class="card-body">
       <p class="card-text">{{budget.description}}</p>
     </div>
@@ -15,7 +15,7 @@
     <div class="card-body">
       <a href="#" class="btn btn-primary">Details</a>
       <p class="text-center w-100">Period: {{budget.period}}</p>
-      <p class="text-center w-100">Created at: {{budget.start.toDateString()}}</p>
+      <p class="text-center w-100">Created at: {{budget.start}}</p>
     </div>
   </div>
 </div>

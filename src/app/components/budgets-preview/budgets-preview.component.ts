@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Budget } from "../../interfaces/Budget";
 import { Periods } from "../../interfaces/Periods";
+import {BudgetsService} from "../../services/budgets.service";
+import {WishesService} from "../../services/wishes.service";
 
 @Component({
   selector: 'app-budgets-preview',
@@ -11,67 +13,32 @@ export class BudgetsPreviewComponent implements OnInit {
 
   budgets : Budget[] = [];
 
-  constructor() { }
+  constructor(
+      private budgetService: BudgetsService,
+      private wishesService: WishesService
+  ) { }
 
   ngOnInit() {
-    this.getBudgets()
-  }
-
-  private getBudgets():void{
-    this.budgets = [
-      {
-        id: 1,
-        name: 'First',
-        description: 'First Description',
-        wishes: [
-          {
-            id: 1,
-            name: 'first wish',
-            priority: 123,
-            price: 222,
-            completed: false,
-            periodically: 0
-          },
-          {
-            id: 2,
-            name: 'second wish',
-            priority: 125,
-            price: 23366,
-            completed: false,
-            periodically: 0
-          },
-          {
-            id: 3,
-            name: 'Third wish long',
-            priority: 125,
-            price: 30000,
-            completed: false,
-            periodically: 0
-          }
-        ],
-        sprints: [],
-        period: Periods.monthly,
-        start: new Date
-      },
-      {
-        id: 2,
-        name: 'Second',
-        description: 'Second Description',
-        wishes: [],
-        sprints: [],
-        period: Periods.monthly,
-        start: new Date
-      },
-      {
-        id: 3,
-        name: 'Third',
-        description: 'Third Description',
-        wishes: [],
-        sprints: [],
-        period: Periods.monthly,
-        start: new Date
-      }
-    ];
+    this.budgetService.getBudgets().subscribe(
+        budgets => {
+          let wishes = this.wishesService.getWishes().subscribe(wishes => {
+                budgets.forEach(budget => {
+                  budget.wishes = [];
+                  for (let i = 0; i < wishes.length; i++) {
+                    if (wishes[i].budget == budget.id)
+                      budget.wishes.push(wishes[i]);
+                  }
+                  this.budgets.push(budget);
+                });
+              },
+              err => console.error(err),
+              () => console.log('wishes loaded')
+          );
+        },
+        err => console.error(err),
+        () => console.log('budgets loaded')
+    );
+    console.log(this.budgets);
   }
 
 }
