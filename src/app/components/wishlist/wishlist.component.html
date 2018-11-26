@@ -1,3 +1,8 @@
-<p>
-  wishlist works!
-</p>
+<div class="row">
+  <div class="col-12 justify-content-start w-75">
+    <app-grid
+            *ngFor="let wish of wishes"
+            [object]="wish"
+    ></app-grid>
+  </div>
+</div>

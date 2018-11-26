@@ -5,6 +5,7 @@ import { BudgetsPreviewComponent } from "./components/budgets-preview/budgets-pr
 import { MainComponent } from "./components/main/main.component";
 import {ContentComponent} from "./components/content/content.component";
 import {AdminComponent} from "./components/admin/admin.component";
+import {WishlistComponent} from "./components/wishlist/wishlist.component";
 
 export const appRoutes : Routes = [
     {path : '', redirectTo : '/login', pathMatch : 'full'},
@@ -17,6 +18,8 @@ export const appRoutes : Routes = [
                 component : ContentComponent,
                 children : [
                     {path : 'budgets-preview', component : BudgetsPreviewComponent},
+                    {path : 'wishlist', component : WishlistComponent},
+                    {path : 'settings', component : WishlistComponent},
                     {path : '', redirectTo : '/main/content/budgets-preview', pathMatch : 'full'}
                 ]
             },

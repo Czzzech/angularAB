@@ -16,7 +16,7 @@ export class ApiService {
 
   constructor(private http:HttpClient) {}
 
-  query(type, apiPath, data, options?){
+  query(type, apiPath, data?, options?){
     return this.http[type](ApiService.createUrl(apiPath));
   }
 

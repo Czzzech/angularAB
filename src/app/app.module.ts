@@ -27,6 +27,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { BudgetCardComponent } from './components/budget-card/budget-card.component';
 import { WishInBudgetsPreviewComponent } from './components/wish-in-budgets-preview/wish-in-budgets-preview.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { GridComponent } from './components/grid/grid.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     AdminComponent,
     BudgetCardComponent,
     WishInBudgetsPreviewComponent,
-    WishlistComponent
+    WishlistComponent,
+    GridComponent
   ],
   imports: [
     BrowserModule,
