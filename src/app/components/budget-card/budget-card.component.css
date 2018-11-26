@@ -7,13 +7,3 @@
 .btn {
     width: 100%;
 }
-
-.list-group-item{
-    cursor: default;
-}
-
-.list-group-item:hover{
-    transform: scale(1.02);
-    transition: 0.3s;
-    box-shadow: 0px 0px 4px rgb(149, 145, 64);
-}

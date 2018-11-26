@@ -1,16 +1,20 @@
 <div class="col-lg-6">
   <div class="card text-white bg-dark mb-3 budget-card">
-    <div class="card-header">{{budget.name}} {{budget.id}}</div>
+    <div class="card-header text-warning text-center font-weight-bold">{{budget.name}} {{budget.id}}</div>
     <div class="card-body">
       <p class="card-text">{{budget.description}}</p>
     </div>
       <ul class="list-group list-group-flush bg-dark text-white">
-        <li class="list-group-item bg-warning text-dark">Cras justo odio</li>
-        <li class="list-group-item bg-warning text-dark">Dapibus ac facilisis in</li>
-        <li class="list-group-item bg-warning text-dark">Vestibulum at eros</li>
+        <app-wish-in-budgets-preview
+          *ngFor="let wish of budget.wishes; let i = index"
+          [index]="i"
+          [wish]="wish"
+          (complete)="splice($event)"
+        ></app-wish-in-budgets-preview>
       </ul>
     <div class="card-body">
       <a href="#" class="btn btn-primary">Details</a>
+      <p class="text-center w-100">Period: {{budget.period}}</p>
       <p class="text-center w-100">Created at: {{budget.start.toDateString()}}</p>
     </div>
   </div>

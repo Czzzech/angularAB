@@ -1,12 +1,13 @@
 <div class="container">
   <div class="login-form">
-    <div class="main-div bg-dark">
+    <div class="main-div">
       <h1 class="display-3 text-warning">AGILE BUDGET</h1>
       <form [formGroup]="form">
         <app-email [form]="form"></app-email>
         <app-password [form]="form"></app-password>
         <input
                 type=submit
+                routerLink="/main"
                 class="btn"
                 [ngClass]="{'btn-primary' : form.valid, 'btn-secondary' : !form.valid}"
                 (click)="login()"

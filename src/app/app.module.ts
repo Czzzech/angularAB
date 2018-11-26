@@ -25,6 +25,8 @@ import { ForgotComponent } from './components/forgot/forgot.component';
 import { MainComponent } from './components/main/main.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { BudgetCardComponent } from './components/budget-card/budget-card.component';
+import { WishInBudgetsPreviewComponent } from './components/wish-in-budgets-preview/wish-in-budgets-preview.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { BudgetCardComponent } from './components/budget-card/budget-card.compon
     ForgotComponent,
     MainComponent,
     AdminComponent,
-    BudgetCardComponent
+    BudgetCardComponent,
+    WishInBudgetsPreviewComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Wish } from "./Wish";
 import { Sprint } from "./Sprint";
+import { Periods } from "./Periods";
 
 export interface Budget{
     id: number,

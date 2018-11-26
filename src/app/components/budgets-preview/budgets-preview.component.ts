@@ -23,9 +23,34 @@ export class BudgetsPreviewComponent implements OnInit {
         id: 1,
         name: 'First',
         description: 'First Description',
-        wishes: [],
+        wishes: [
+          {
+            id: 1,
+            name: 'first wish',
+            priority: 123,
+            price: 222,
+            completed: false,
+            periodically: 0
+          },
+          {
+            id: 2,
+            name: 'second wish',
+            priority: 125,
+            price: 23366,
+            completed: false,
+            periodically: 0
+          },
+          {
+            id: 3,
+            name: 'Third wish long',
+            priority: 125,
+            price: 30000,
+            completed: false,
+            periodically: 0
+          }
+        ],
         sprints: [],
-        period: 2,
+        period: Periods.monthly,
         start: new Date
       },
       {
@@ -34,7 +59,7 @@ export class BudgetsPreviewComponent implements OnInit {
         description: 'Second Description',
         wishes: [],
         sprints: [],
-        period: 2,
+        period: Periods.monthly,
         start: new Date
       },
       {
@@ -43,7 +68,7 @@ export class BudgetsPreviewComponent implements OnInit {
         description: 'Third Description',
         wishes: [],
         sprints: [],
-        period: 2,
+        period: Periods.monthly,
         start: new Date
       }
     ];

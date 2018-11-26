@@ -15,4 +15,8 @@ export class BudgetCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  splice(wishIndex){
+    this.budget.wishes.splice(wishIndex, 1);
+  }
+
 }
