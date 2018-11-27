@@ -3,6 +3,7 @@ import { Wish } from "../../interfaces/Wish";
 import { GridConfig } from "../../interfaces/GridConfig";
 import { WishlistTitleColumnComponent } from "../grid/grid-columns/wishlist/wishlist-title-column/wishlist-title-column.component";
 import {WishesService} from "../../services/wishes.service";
+import {DescriptionColumnComponent} from "../grid/grid-columns/description-column/description-column.component";
 
 @Component({
   selector: 'app-wishlist',
@@ -40,7 +41,7 @@ export class WishlistComponent implements OnInit {
                     title: 'Description'
                 },
                 content: {
-                    component: WishlistTitleColumnComponent
+                    component: DescriptionColumnComponent
                 }
             },
           {
@@ -53,9 +54,9 @@ export class WishlistComponent implements OnInit {
             }
           },
         {
-            key: 'priority',
+            key: 'order',
             header: {
-                title: 'Priority'
+                title: 'Order'
             },
             content: {
                 component: ''

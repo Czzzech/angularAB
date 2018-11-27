@@ -38,6 +38,7 @@ import { DynamicComponentsLoadDirective } from './directives/dynamic-components-
 import { GridBaseColumnComponent } from './components/grid/grid-columns/grid-base-column/grid-base-column.component';
 import { GridHeaderCellComponent } from './components/grid/grid-header-cell/grid-header-cell.component';
 import { GridCellComponent } from './components/grid/grid-cell/grid-cell.component';
+import { DescriptionColumnComponent } from './components/grid/grid-columns/description-column/description-column.component';
 
 @NgModule({
   declarations: [
@@ -71,11 +72,13 @@ import { GridCellComponent } from './components/grid/grid-cell/grid-cell.compone
     DynamicComponentsLoadDirective,
     GridBaseColumnComponent,
     GridHeaderCellComponent,
-    GridCellComponent
+    GridCellComponent,
+    DescriptionColumnComponent
   ],
   entryComponents: [
     GridBaseColumnComponent,
-    WishlistTitleColumnComponent
+    WishlistTitleColumnComponent,
+    DescriptionColumnComponent
   ],
   imports: [
     BrowserModule,
