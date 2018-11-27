@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { AlertService } from "./alert.service";
 
-const apiUrl = 'http://ab.rest.com';
+const apiUrl = 'http://ab.rest.local';
 
 @Injectable({
   providedIn: 'root'

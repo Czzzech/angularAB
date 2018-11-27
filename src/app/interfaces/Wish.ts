@@ -1,8 +1,9 @@
 export interface Wish{
     id: number,
-    name: string,
-    priority: number,
+    title: string,
+    description: number,
     price: number,
+    order: number,
     completed: boolean,
     periodically: number
 }

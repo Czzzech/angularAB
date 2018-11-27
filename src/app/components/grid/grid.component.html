@@ -1,1 +1,19 @@
-{{object.id}} - {{object.title}}
+<div class="grid-container">
+    <app-grid-summary></app-grid-summary>
+    <table class="table table-bordered">
+        <thead>
+            <tr
+                app-grid-header
+                [config]="config"
+            ></tr>
+        </thead>
+        <tbody>
+            <tr app-grid-item
+                *ngFor="let item of data"
+                [item]="item"
+                [config]="config"
+            ></tr>
+        </tbody>
+    </table>
+    <app-grid-paginator></app-grid-paginator>
+</div>

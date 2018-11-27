@@ -28,6 +28,16 @@ import { BudgetCardComponent } from './components/budget-card/budget-card.compon
 import { WishInBudgetsPreviewComponent } from './components/wish-in-budgets-preview/wish-in-budgets-preview.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { GridComponent } from './components/grid/grid.component';
+import { GridHeaderComponent } from './components/grid/grid-header/grid-header.component';
+import { GridItemComponent } from './components/grid/grid-item/grid-item.component';
+import { GridFilterComponent } from './components/grid/grid-filter/grid-filter.component';
+import { GridPaginatorComponent } from './components/grid/grid-paginator/grid-paginator.component';
+import { GridSummaryComponent } from './components/grid/grid-summary/grid-summary.component';
+import { WishlistTitleColumnComponent } from './components/grid/grid-columns/wishlist/wishlist-title-column/wishlist-title-column.component';
+import { DynamicComponentsLoadDirective } from './directives/dynamic-components-load.directive';
+import { GridBaseColumnComponent } from './components/grid/grid-columns/grid-base-column/grid-base-column.component';
+import { GridHeaderCellComponent } from './components/grid/grid-header-cell/grid-header-cell.component';
+import { GridCellComponent } from './components/grid/grid-cell/grid-cell.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +61,21 @@ import { GridComponent } from './components/grid/grid.component';
     BudgetCardComponent,
     WishInBudgetsPreviewComponent,
     WishlistComponent,
-    GridComponent
+    GridComponent,
+    GridHeaderComponent,
+    GridItemComponent,
+    GridFilterComponent,
+    GridPaginatorComponent,
+    GridSummaryComponent,
+    WishlistTitleColumnComponent,
+    DynamicComponentsLoadDirective,
+    GridBaseColumnComponent,
+    GridHeaderCellComponent,
+    GridCellComponent
+  ],
+  entryComponents: [
+    GridBaseColumnComponent,
+    WishlistTitleColumnComponent
   ],
   imports: [
     BrowserModule,

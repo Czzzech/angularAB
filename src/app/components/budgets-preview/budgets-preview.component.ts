@@ -19,26 +19,27 @@ export class BudgetsPreviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.budgetService.getBudgets().subscribe(
-        budgets => {
-          let wishes = this.wishesService.getWishes().subscribe(wishes => {
-                budgets.forEach(budget => {
-                  budget.wishes = [];
-                  for (let i = 0; i < wishes.length; i++) {
-                    if (wishes[i].budget == budget.id)
-                      budget.wishes.push(wishes[i]);
-                  }
-                  this.budgets.push(budget);
-                });
+      if (this.budgets.length == 0) {
+          this.budgetService.getBudgets().subscribe(
+              budgets => {
+                  let wishes = this.wishesService.getWishes().subscribe(wishes => {
+                          budgets.forEach(budget => {
+                              budget.wishes = [];
+                              for (let i = 0; i < wishes.length; i++) {
+                                  if (wishes[i].budget == budget.id)
+                                      budget.wishes.push(wishes[i]);
+                              }
+                              this.budgets.push(budget);
+                          });
+                      },
+                      err => console.error(err),
+                      () => console.log('wishes loaded')
+                  );
               },
               err => console.error(err),
-              () => console.log('wishes loaded')
+              () => console.log('budgets loaded')
           );
-        },
-        err => console.error(err),
-        () => console.log('budgets loaded')
-    );
-    console.log(this.budgets);
+      }
   }
 
 }
