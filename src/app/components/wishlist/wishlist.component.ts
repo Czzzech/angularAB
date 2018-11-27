@@ -89,7 +89,17 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit() {
       this.wishesService.getWishes().subscribe(wishes => {
-              this.wishes = wishes;
+          wishes.forEach(wish => {
+              this.wishes.push({
+                  id : parseFloat(wish.id),
+                  title : wish.title,
+                  description : wish.description,
+                  price : wish.price,
+                  order : wish.order,
+                  completed : wish.completed,
+                  periodically : wish.periodically
+              });
+          });
           },
           err => console.error(err),
           () => console.log('wishes loaded')
