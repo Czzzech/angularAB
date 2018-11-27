@@ -96,7 +96,7 @@ export class WishlistComponent implements OnInit {
                   description : wish.description,
                   price : wish.price,
                   order : wish.order,
-                  completed : wish.completed,
+                  completed : (new Date(wish.completed)).toDateString(),
                   periodically : wish.periodically
               });
           });

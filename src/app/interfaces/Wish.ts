@@ -4,6 +4,6 @@ export interface Wish{
     description: string,
     price: number,
     order: number,
-    completed: boolean,
+    completed: string,
     periodically: number
 }
