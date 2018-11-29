@@ -17,4 +17,8 @@ export class WishesService {
       return this.api.query('get', 'wishes');
   }
 
+  getColumnsConfig(){
+    return this.api.query('get', 'wishes/config');
+  }
+
 }

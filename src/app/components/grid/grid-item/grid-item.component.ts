@@ -18,6 +18,11 @@ export class GridItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.config.columns.forEach(fieldConfig => {
+      if(!fieldConfig.show){
+        delete this.item[fieldConfig.key];
+      }
+    });
   }
 
   getKeys(object){

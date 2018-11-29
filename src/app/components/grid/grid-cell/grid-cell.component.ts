@@ -1,8 +1,9 @@
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import {Component, ComponentFactoryResolver, Input, OnInit, ViewChild} from '@angular/core';
 import { GridCell } from "../../../interfaces/GridCell";
 import { DynamicComponentsLoadDirective } from "../../../directives/dynamic-components-load.directive";
 import { GridConfig } from "../../../interfaces/GridConfig";
-import {GridBaseColumnComponent} from "../grid-columns/grid-base-column/grid-base-column.component";
+import { GridBaseColumnComponent } from "../grid-columns/grid-base-column/grid-base-column.component";
+import { DynamicComponentsMappingService } from "../../../services/dynamic-components-mapping.service";
 
 @Component({
   selector: '[app-grid-cell]',
@@ -16,7 +17,10 @@ export class GridCellComponent implements OnInit, GridCell {
   @Input() config: GridConfig;
   @ViewChild(DynamicComponentsLoadDirective) componentsLoadDirective: DynamicComponentsLoadDirective;
 
-  constructor(public componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(
+      public componentFactoryResolver: ComponentFactoryResolver,
+      private mapping : DynamicComponentsMappingService
+  ) { }
 
   ngOnInit() {
 
@@ -35,10 +39,14 @@ export class GridCellComponent implements OnInit, GridCell {
         if (this.config.columns[i].content.component === '') {
           break;
         }
-        return this.config.columns[i].content.component;
+        return this.mapping.getClass(this.config.columns[i].content.component);
       }
     }
     return GridBaseColumnComponent;
+  }
+
+  isVisible(){
+
   }
 
 }

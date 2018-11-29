@@ -11,6 +11,7 @@ export class GridComponent implements OnInit, Grid {
 
   @Input() data: any[] = [];
   @Input() config: GridConfig;
+  @Input() drawColumns: [];
 
   constructor() { }
 
