@@ -17,7 +17,7 @@ import { DateFieldComponent } from './components/fields/date-field/date-field.co
 import { BudgetsPreviewComponent } from './components/budgets-preview/budgets-preview.component';
 import { RouterModule } from "@angular/router";
 import { appRoutes } from "./routes";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { EmailComponent } from './components/fields/email/email.component';
 import { PasswordComponent } from './components/fields/password/password.component';
@@ -39,6 +39,10 @@ import { GridBaseColumnComponent } from './components/grid/grid-columns/grid-bas
 import { GridHeaderCellComponent } from './components/grid/grid-header-cell/grid-header-cell.component';
 import { GridCellComponent } from './components/grid/grid-cell/grid-cell.component';
 import { DescriptionColumnComponent } from './components/grid/grid-columns/description-column/description-column.component';
+import { WishlistPanelComponent } from './components/wishlist-panel/wishlist-panel.component';
+import { FormHeaderComponent } from './components/form/form-header/form-header.component';
+import { FormFooterComponent } from './components/form/form-footer/form-footer.component';
+import { FormContentComponent } from './components/form/form-content/form-content.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +77,11 @@ import { DescriptionColumnComponent } from './components/grid/grid-columns/descr
     GridBaseColumnComponent,
     GridHeaderCellComponent,
     GridCellComponent,
-    DescriptionColumnComponent
+    DescriptionColumnComponent,
+    WishlistPanelComponent,
+    FormHeaderComponent,
+    FormFooterComponent,
+    FormContentComponent
   ],
   entryComponents: [
     GridBaseColumnComponent,

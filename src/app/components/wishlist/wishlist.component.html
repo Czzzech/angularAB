@@ -1,1 +1,14 @@
-<app-grid [data]="wishes" [config]="gridConfig" [drawColumns]="gridColumns"></app-grid>
+<div class="row">
+    <div class="col-3 h-100">
+        <app-wishlist-panel
+        ></app-wishlist-panel>
+    </div>
+    <div class="col-9">
+        <app-grid
+                [data]="wishes"
+                [config]="gridConfig"
+                [drawColumns]="gridColumns"
+        ></app-grid>
+    </div>
+    <app-form [id]="'wishForm'"></app-form>
+</div>
