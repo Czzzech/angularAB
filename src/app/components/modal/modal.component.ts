@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ModalComponent implements OnInit {
 
   id : string;
+  config : any;
 
   constructor() { }
 

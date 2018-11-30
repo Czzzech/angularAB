@@ -1,15 +1,21 @@
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div app-modal-header class="modal-header">
-          ASD
-      </div>
-      <div app-modal-content class="modal-body">
-ASD
-      </div>
-      <div app-modal-footer class="modal-footer">
-ASD
-      </div>
+      <div
+              app-modal-header
+              class="modal-header bg-{{ config.header.bg }}"
+              [config]="config.header"
+      ></div>
+      <div
+              app-modal-content
+              class="modal-body bg-{{ config.content.bg }}"
+              [config]="config.content"
+      ></div>
+      <div
+              app-modal-footer
+              class="modal-footer bg-{{ config.footer.bg }}"
+              [config]="config.footer"
+      ></div>
     </div>
   </div>
 

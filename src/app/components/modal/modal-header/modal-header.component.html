@@ -1,4 +1,4 @@
-<h5 class="modal-title" id="exampleModalLabel">New message</h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  <span aria-hidden="true"><i class="fa fa-times"></i></span>
+<h5 class="modal-title text-light" id="exampleModalLabel">{{ config.title }}</h5>
+<button *ngIf="config.closeButton" type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true"><i class="fa fa-times text-light"></i></span>
 </button>

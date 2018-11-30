@@ -1,3 +1,5 @@
-<p>
-  modal-footer works!
-</p>
+<button
+        *ngFor="let button of config.buttons"
+        class="btn {{ button.class }}"
+
+>{{ button.text }}</button>

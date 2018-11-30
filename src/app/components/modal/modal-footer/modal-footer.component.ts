@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: '[app-modal-footer]',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-footer.component.css']
 })
 export class ModalFooterComponent implements OnInit {
+
+  @Input() config : any;
 
   constructor() { }
 
