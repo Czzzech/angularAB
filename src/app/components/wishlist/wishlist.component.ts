@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Wish } from "../../interfaces/Wish";
 import { GridConfig } from "../../interfaces/GridConfig";
 import {WishesService} from "../../services/wishes.service";
+import {GridColumn} from "../../interfaces/GridColumn";
 
 @Component({
   selector: 'app-wishlist',
@@ -18,7 +19,7 @@ export class WishlistComponent implements OnInit {
     pagination  : {},
     filters     : []
   };
-  gridColumns : [] = [];
+  gridColumns : GridColumn[] = [];
 
   constructor(private wishesService: WishesService) { }
 

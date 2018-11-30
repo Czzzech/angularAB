@@ -44,6 +44,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ModalHeaderComponent } from './components/modal/modal-header/modal-header.component';
 import { ModalContentComponent } from './components/modal/modal-content/modal-content.component';
 import { ModalFooterComponent } from './components/modal/modal-footer/modal-footer.component';
+import { BaseFieldComponent } from './components/fields/base-field/base-field.component';
 
 @NgModule({
   declarations: [
@@ -83,13 +84,17 @@ import { ModalFooterComponent } from './components/modal/modal-footer/modal-foot
     ModalComponent,
     ModalHeaderComponent,
     ModalContentComponent,
-    ModalFooterComponent
+    ModalFooterComponent,
+    BaseFieldComponent
   ],
   entryComponents: [
     GridBaseColumnComponent,
     WishlistTitleColumnComponent,
     DescriptionColumnComponent,
-    ModalComponent
+    ModalComponent,
+    FormComponent,
+    TextFieldComponent,
+    DateFieldComponent
   ],
   imports: [
     BrowserModule,

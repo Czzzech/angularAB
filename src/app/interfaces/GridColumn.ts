@@ -6,4 +6,5 @@ export interface GridColumn{
     content: {
         component: any
     };
+    show: boolean;
 }
