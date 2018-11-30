@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ModalService} from "../../services/modal.service";
 
 @Component({
   selector: 'app-wishlist-panel',
@@ -7,16 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class WishlistPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(public modal: ModalService) { }
 
   ngOnInit() {
-  }
 
-  /**
-   * Просит открыть модальную форму
-   */
-  form(){
-    $('#wishForm').modal('toggle')
   }
-
 }

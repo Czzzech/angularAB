@@ -40,9 +40,10 @@ import { GridHeaderCellComponent } from './components/grid/grid-header-cell/grid
 import { GridCellComponent } from './components/grid/grid-cell/grid-cell.component';
 import { DescriptionColumnComponent } from './components/grid/grid-columns/description-column/description-column.component';
 import { WishlistPanelComponent } from './components/wishlist-panel/wishlist-panel.component';
-import { FormHeaderComponent } from './components/form/form-header/form-header.component';
-import { FormFooterComponent } from './components/form/form-footer/form-footer.component';
-import { FormContentComponent } from './components/form/form-content/form-content.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ModalHeaderComponent } from './components/modal/modal-header/modal-header.component';
+import { ModalContentComponent } from './components/modal/modal-content/modal-content.component';
+import { ModalFooterComponent } from './components/modal/modal-footer/modal-footer.component';
 
 @NgModule({
   declarations: [
@@ -79,14 +80,16 @@ import { FormContentComponent } from './components/form/form-content/form-conten
     GridCellComponent,
     DescriptionColumnComponent,
     WishlistPanelComponent,
-    FormHeaderComponent,
-    FormFooterComponent,
-    FormContentComponent
+    ModalComponent,
+    ModalHeaderComponent,
+    ModalContentComponent,
+    ModalFooterComponent
   ],
   entryComponents: [
     GridBaseColumnComponent,
     WishlistTitleColumnComponent,
-    DescriptionColumnComponent
+    DescriptionColumnComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
