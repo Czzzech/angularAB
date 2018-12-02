@@ -1,10 +1,7 @@
 import {
-  ApplicationRef, ChangeDetectorRef, Component, ComponentFactoryResolver, EmbeddedViewRef, Injector, Input, OnInit,
-  ViewChild
+  Component, Input, OnInit
 } from '@angular/core';
 import {FormGroup} from "@angular/forms";
-import {DynamicComponentsMappingService} from "../../services/dynamic-components-mapping.service";
-import {TextFieldComponent} from "../fields/text-field/text-field.component";
 
 @Component({
   selector: '[app-form]',
@@ -13,43 +10,13 @@ import {TextFieldComponent} from "../fields/text-field/text-field.component";
 })
 export class FormComponent implements OnInit {
 
-  fieldsConfig: any;
+  @Input() fieldsConfig: any;
 
   form: FormGroup;
 
-  constructor(
-      private detector: ChangeDetectorRef,
-      private appRef: ApplicationRef,
-      public componentFactoryResolver: ComponentFactoryResolver,
-      private mapping : DynamicComponentsMappingService,
-      private injector: Injector
-  ) { }
+  constructor() { }
 
-  render(config: any, element){
-    //this.detector.detectChanges();
-    this.form = new FormGroup({});
-    this.fieldsConfig = config;
-    for(let i = 0; i < this.fieldsConfig.length; i++){
+  ngOnInit(){
 
-      let componentRef = this.componentFactoryResolver
-          .resolveComponentFactory(this.getComponent(i))
-          .create(this.injector);
-
-      this.appRef.attachView(componentRef.hostView);
-
-      componentRef.instance.render(this.form, this.fieldsConfig[i]);
-
-      let formElement = (componentRef.hostView as EmbeddedViewRef<any>)
-          .rootNodes[0] as HTMLElement;
-      element.appendChild(formElement);
-    }
   }
-
-  getComponent(i) {
-
-    let component = this.mapping.getClass(this.fieldsConfig[i].component);
-
-    return component === undefined ? TextFieldComponent : component;
-  }
-
 }

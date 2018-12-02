@@ -6,10 +6,10 @@ import {BaseFieldComponent} from "../base-field/base-field.component";
   templateUrl: './text-field.component.html',
   styleUrls: ['./text-field.component.css']
 })
-export class TextFieldComponent extends BaseFieldComponent {
+export class TextFieldComponent extends BaseFieldComponent{
 
   constructor() {
-    super();
+
   }
 
 }

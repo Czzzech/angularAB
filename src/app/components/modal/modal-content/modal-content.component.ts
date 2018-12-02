@@ -1,8 +1,8 @@
 import {
-  ApplicationRef,
-  Component, ComponentFactoryResolver, ElementRef, EmbeddedViewRef, Injector, Input, OnInit, ViewChild
+  Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewContainerRef
 } from '@angular/core';
 import {FormComponent} from "../../form/form.component";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: '[app-modal-content]',
@@ -11,32 +11,23 @@ import {FormComponent} from "../../form/form.component";
 })
 export class ModalContentComponent implements OnInit {
 
-  @ViewChild('div') div : ElementRef;
+  @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
   @Input() config : any;
 
   constructor(
-      private appRef: ApplicationRef,
-      private componentFactoryResolver: ComponentFactoryResolver,
-      private injector: Injector,
+      private componentFactoryResolver: ComponentFactoryResolver
   ) { }
 
-  ngOnInit() {
+  ngOnInit(){
+    console.log(this.config);
     if(this.config.type === 'form') {
-      // 1. Create a component reference from the component
-      let componentRef = this.componentFactoryResolver
-          .resolveComponentFactory(FormComponent)
-          .create(this.injector);
+      let componentFactory = this.componentFactoryResolver.resolveComponentFactory(FormComponent);
 
-      this.appRef.attachView(componentRef.hostView);
+      this.vc.clear();
 
-      let formElement = (componentRef.hostView as EmbeddedViewRef<any>)
-          .rootNodes[0] as HTMLElement;
-
-      this.div.nativeElement.appendChild(formElement);
-
-      componentRef.instance.render(this.config.formConfig, formElement);
-
-      // 3. Get DOM element from component
+      let componentRef = this.vc.createComponent(componentFactory);
+      componentRef.instance.fieldsConfig = this.config.formConfig;
+      componentRef.instance.form = new FormGroup({});
 
     }else{
       //TODO: custom modal content
