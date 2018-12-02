@@ -1,4 +1,5 @@
 import {
+  ApplicationRef,
   Component, ComponentFactoryResolver, ElementRef, EmbeddedViewRef, Injector, Input, OnInit, ViewChild
 } from '@angular/core';
 import {FormComponent} from "../../form/form.component";
@@ -14,6 +15,7 @@ export class ModalContentComponent implements OnInit {
   @Input() config : any;
 
   constructor(
+      private appRef: ApplicationRef,
       private componentFactoryResolver: ComponentFactoryResolver,
       private injector: Injector,
   ) { }
@@ -24,6 +26,8 @@ export class ModalContentComponent implements OnInit {
       let componentRef = this.componentFactoryResolver
           .resolveComponentFactory(FormComponent)
           .create(this.injector);
+
+      this.appRef.attachView(componentRef.hostView);
 
       let formElement = (componentRef.hostView as EmbeddedViewRef<any>)
           .rootNodes[0] as HTMLElement;

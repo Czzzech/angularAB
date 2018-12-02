@@ -8,6 +8,8 @@ import {BaseFieldComponent} from "../base-field/base-field.component";
 })
 export class DateFieldComponent extends BaseFieldComponent {
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
 }

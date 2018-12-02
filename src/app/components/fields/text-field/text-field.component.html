@@ -1,3 +1,20 @@
-<p>
-  text-field works!
-</p>
+<div [formGroup]="group" class="form-group input-group mb-3">
+    <div class="input-group-prepend">
+          <span
+                  class="input-group-text text-warning"
+                  id="icon"
+                  title="{{ config.key }}"
+          >
+            <i *ngIf="config.icon && !config.title" class="fa fa-{{ config.icon }}"></i>
+            <span *ngIf="config.title" class="field-title">{{ config.title }}</span>
+          </span>
+    </div>
+    <input
+            type="text"
+            class="form-control"
+            placeholder="{{ config.title === undefined ? config.key : config.title }}"
+            aria-label="Text"
+            aria-describedby="icon"
+            formControlName="field"
+    >
+</div>

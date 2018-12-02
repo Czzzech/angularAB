@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import { Component } from '@angular/core';
 import {BaseFieldComponent} from "../base-field/base-field.component";
 
 @Component({
@@ -9,6 +8,8 @@ import {BaseFieldComponent} from "../base-field/base-field.component";
 })
 export class TextFieldComponent extends BaseFieldComponent {
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
 }
