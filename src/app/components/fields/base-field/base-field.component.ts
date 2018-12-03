@@ -11,7 +11,6 @@ export class BaseFieldComponent implements OnInit {
   public field : FormControl;
   public group : FormGroup;
   @Input() form: FormGroup;
-
   @Input() config: any = false;
   defaultConfig = {
     component : 'BaseFieldComponent',

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
 import {BaseFieldComponent} from "../base-field/base-field.component";
 
 @Component({
@@ -9,7 +9,6 @@ import {BaseFieldComponent} from "../base-field/base-field.component";
 })
 export class PasswordComponent extends BaseFieldComponent implements OnInit{
 
-  passwordGroup: FormGroup;
   password: FormControl;
   passwordConfirm: FormControl;
 
@@ -20,11 +19,20 @@ export class PasswordComponent extends BaseFieldComponent implements OnInit{
     icon : 'key'
   };
 
+  configConfirm = {
+    component : 'PasswordComponent',
+    key : 'confirmPassword',
+    title : 'Confirm Password',
+    icon : 'key'
+  };
+
   @Input('passwordConfirm') needConfirm : boolean;
 
   @Output('equals') equalsEmitter : EventEmitter<boolean> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
     super.ngOnInit();

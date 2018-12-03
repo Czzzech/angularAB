@@ -16,7 +16,9 @@ export class EmailComponent extends BaseFieldComponent implements OnInit{
     title : 'E-mail',
     icon : 'at'
   };
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
     super.ngOnInit();

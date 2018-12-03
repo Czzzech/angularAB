@@ -5,6 +5,6 @@
         title="{{ config.key }}"
         [ngClass]="{'valid-icon': noErrors(), 'invalid-icon' : hasErrors()}"
 >
-  <i *ngIf="config.icon" class="fa fa-{{ config.icon }} icon-border"></i>
-  <span class="field-title">{{ config.title }}</span>
+  <span class="icon-border" *ngIf="config.icon"><i class="fa fa-{{ config.icon }}"></i></span>
+  <span class="field-title" [ngClass]="{'w-100':config.icon}">{{ config.title }}</span>
 </span>

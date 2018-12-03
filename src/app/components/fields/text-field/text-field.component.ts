@@ -10,7 +10,7 @@ import {Validators} from "@angular/forms";
 export class TextFieldComponent extends BaseFieldComponent {
 
   constructor() {
-
+    super();
   }
 
   ngOnInit(){

@@ -1,6 +1,5 @@
 span{
     justify-content: center;
-    border: none;
     background-color: #6c757d;
 }
 
@@ -11,7 +10,7 @@ span{
 
 .valid-icon{
     box-shadow: 0px 0px 8px rgba(0, 150, 0, 0.5)!important;
-    border-color: rgba(36, 255, 36, 0.06);
+    border-color: rgba(36, 255, 36, 0.52);;
 }
 
 .field-title{
@@ -19,12 +18,14 @@ span{
 }
 
 .invalid-icon{
-    box-shadow: 0px 0px 8px rgba(255, 9, 5, 0.61)!important;
-    background-color: rgba(255, 0, 15, 0.78);
-    border-color: rgba(255, 0, 15, 0.51);
+    box-shadow: 0px 0px 8px rgba(255, 9, 5, 0.9) !important;
+    background-color: rgba(255, 0, 15, 0.55);
+    border-color: rgba(255, 0, 15, 0.84);
 }
 
 .icon-border{
+    background-color: transparent;
+    width: 40px;
     padding-right: 5px;
     border-right: 1px solid;
     margin-right: 5px;

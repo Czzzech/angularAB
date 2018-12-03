@@ -11,6 +11,7 @@
 }
 
 .form-control{
+    background-color: transparent;
     box-shadow: none;
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;

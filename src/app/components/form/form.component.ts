@@ -1,5 +1,5 @@
 import {
-  Component, ComponentRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
+  Component, ComponentRef, OnInit,
 } from '@angular/core';
 import {FormGroup} from "@angular/forms";
 
@@ -8,10 +8,9 @@ import {FormGroup} from "@angular/forms";
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit, OnChanges {
+export class FormComponent implements OnInit {
 
   fieldsConfig: any;
-  parentComponentRef : ComponentRef;
   form: FormGroup;
 
   constructor() { }

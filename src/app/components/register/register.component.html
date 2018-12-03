@@ -4,8 +4,16 @@
       <h6 class="display-4 text-warning">DREAM BUDGET</h6>
       <h6 class="display-6 text-warning">SIGN IN</h6>
       <form [formGroup]="form">
-        <app-email [form]="form"></app-email>
-        <app-password [form]="form" [passwordConfirm]="true" (equals)="setEqual($event)"></app-password>
+        <app-email
+                [form]="form"
+                [config]="false"
+        ></app-email>
+        <app-password
+                [form]="form"
+                [passwordConfirm]="true"
+                [config]="false"
+                (equals)="setEqual($event)"
+        ></app-password>
         <input
                 type=submit
                 class="btn"
