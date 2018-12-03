@@ -1,0 +1,10 @@
+
+<span
+        class="input-group-text text-warning"
+        id="icon"
+        title="{{ config.key }}"
+        [ngClass]="{'valid-icon': noErrors(), 'invalid-icon' : hasErrors()}"
+>
+  <i *ngIf="config.icon" class="fa fa-{{ config.icon }} icon-border"></i>
+  <span class="field-title">{{ config.title }}</span>
+</span>

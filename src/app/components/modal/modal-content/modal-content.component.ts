@@ -1,5 +1,5 @@
 import {
-  Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewContainerRef
+  Component, ComponentFactoryResolver, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef
 } from '@angular/core';
 import {FormComponent} from "../../form/form.component";
 import {FormGroup} from "@angular/forms";
@@ -13,25 +13,34 @@ export class ModalContentComponent implements OnInit {
 
   @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
   @Input() config : any;
+  @Output('valid') validChangeEmitter : EventEmitter<string> = new EventEmitter();
 
   constructor(
       private componentFactoryResolver: ComponentFactoryResolver
   ) { }
 
   ngOnInit(){
-    console.log(this.config);
     if(this.config.type === 'form') {
+
+      let form = new FormGroup({});
+      form.statusChanges
+          .subscribe(val => this.onValid(val));
+
       let componentFactory = this.componentFactoryResolver.resolveComponentFactory(FormComponent);
 
       this.vc.clear();
 
       let componentRef = this.vc.createComponent(componentFactory);
       componentRef.instance.fieldsConfig = this.config.formConfig;
-      componentRef.instance.form = new FormGroup({});
+      componentRef.instance.form = form;
 
     }else{
       //TODO: custom modal content
     }
+  }
+
+  onValid(valid){
+    this.validChangeEmitter.emit(valid)
   }
 
 }

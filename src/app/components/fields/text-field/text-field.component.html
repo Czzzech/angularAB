@@ -1,14 +1,10 @@
 <div [formGroup]="group" class="form-group input-group mb-3">
-    <div class="input-group-prepend">
-          <span
-                  class="input-group-text text-warning"
-                  id="icon"
-                  title="{{ config.key }}"
-          >
-            <i *ngIf="config.icon && !config.title" class="fa fa-{{ config.icon }}"></i>
-            <span *ngIf="config.title" class="field-title">{{ config.title }}</span>
-          </span>
-    </div>
+    <div
+            class="input-group-prepend"
+            app-field-prepend
+            [config]="config"
+            [field]="field"
+    ></div>
     <input
             type="text"
             class="form-control"
@@ -16,5 +12,6 @@
             aria-label="Text"
             aria-describedby="icon"
             formControlName="field"
+            [ngClass]="{'valid': noErrors(), 'invalid' : hasErrors()}"
     >
 </div>

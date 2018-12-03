@@ -1,6 +1,6 @@
 
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" [ngClass]="{valid : valid && !invalid, invalid : !valid && invalid}">
       <div
               app-modal-header
               class="modal-header bg-{{ config.header.bg }}"
@@ -10,6 +10,7 @@
               app-modal-content
               class="modal-body"
               [config]="config.content"
+              (valid)="isValid($event)"
       ></div>
       <div
               app-modal-footer

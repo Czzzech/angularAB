@@ -1,18 +1,25 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {BaseFieldComponent} from "../base-field/base-field.component";
 
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
-  styleUrls: ['./password.component.css']
+  styleUrls: ['./password.component.css', '../base-field/base-field.component.css']
 })
-export class PasswordComponent implements OnInit {
+export class PasswordComponent extends BaseFieldComponent implements OnInit{
 
   passwordGroup: FormGroup;
   password: FormControl;
   passwordConfirm: FormControl;
 
-  @Input('form') parentGroup : FormGroup;
+  defaultConfig = {
+    component : 'PasswordComponent',
+    key : 'password',
+    title : 'Password',
+    icon : 'key'
+  };
+
   @Input('passwordConfirm') needConfirm : boolean;
 
   @Output('equals') equalsEmitter : EventEmitter<boolean> = new EventEmitter();
@@ -20,16 +27,11 @@ export class PasswordComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.password = new FormControl(
-        "", [
-          Validators.required,
-          Validators.minLength(8)
-        ]
-    );
-
-    this.passwordGroup = new FormGroup({
-      password: this.password,
-    });
+    super.ngOnInit();
+    this.field.setValidators([
+      Validators.required,
+      Validators.minLength(8)
+    ]);
     if(this.needConfirm) {
       this.passwordConfirm = new FormControl(
           "", [
@@ -37,17 +39,16 @@ export class PasswordComponent implements OnInit {
             Validators.minLength(8)
           ]
       );
-      this.passwordGroup.addControl('passwordConfirm', this.passwordConfirm)
+      this.group.addControl('passwordConfirm', this.passwordConfirm)
     }
-    this.parentGroup.addControl('passwordGroup', this.passwordGroup);
   }
 
   hasErrors(){
-    return this.password.errors && (this.password.dirty || this.password.touched);
+    return this.field.errors && (this.field.dirty || this.field.touched);
   }
 
   noErrors(){
-    return !this.password.errors && (this.password.dirty || this.password.touched);
+    return !this.field.errors && (this.field.dirty || this.field.touched);
   }
 
   emitEqual(){
@@ -56,22 +57,22 @@ export class PasswordComponent implements OnInit {
 
   confirmEquals(){
     if(!this.needConfirm) return true;
-    return (this.password.value.length > 0) && (this.password.value === this.passwordConfirm.value) && (this.password.dirty || this.password.touched);
+    return (this.field.value.length > 0) && (this.field.value === this.passwordConfirm.value) && (this.field.dirty || this.field.touched);
   }
 
   confirmNotEquals(){
     if(!this.needConfirm) return false;
-    return !(this.password.value === this.passwordConfirm.value) && (this.password.dirty || this.password.touched);
+    return !(this.field.value === this.passwordConfirm.value) && (this.field.dirty || this.field.touched);
   }
 
   valid(key?: string){
     switch (key){
       case 'minlength':
-        return !this.password.errors.minlength;
+        return !this.field.errors.minlength;
       case 'required':
-        return !this.password.errors.required;
+        return !this.field.errors.required;
       default:
-        return !this.password.invalid;
+        return !this.field.invalid;
     }
   }
 

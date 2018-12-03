@@ -1,7 +1,11 @@
 <form [formGroup]="form">
-    <div app-field
-            *ngFor="let fieldConfig of fieldsConfig"
-            [config]="fieldConfig"
-            [form]="form"
-    ></div>
+    <div class="row">
+        <div
+                class="col-lg-6 col-sm-12"
+                app-field
+                *ngFor="let fieldConfig of fieldsConfig"
+                [config]="fieldConfig"
+                [form]="form"
+        ></div>
+    </div>
 </form>

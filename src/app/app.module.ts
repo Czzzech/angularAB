@@ -46,6 +46,7 @@ import { ModalContentComponent } from './components/modal/modal-content/modal-co
 import { ModalFooterComponent } from './components/modal/modal-footer/modal-footer.component';
 import { BaseFieldComponent } from './components/fields/base-field/base-field.component';
 import { FieldComponent } from './components/form/field/field.component';
+import { FieldPrependComponent } from './components/fields/field-prepend/field-prepend.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { FieldComponent } from './components/form/field/field.component';
     ModalContentComponent,
     ModalFooterComponent,
     BaseFieldComponent,
-    FieldComponent
+    FieldComponent,
+    FieldPrependComponent
   ],
   entryComponents: [
     GridBaseColumnComponent,

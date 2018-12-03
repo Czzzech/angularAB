@@ -3,8 +3,14 @@
     <div class="main-div">
       <h6 class="display-4 text-warning">DREAM BUDGET</h6>
       <form [formGroup]="form">
-        <app-email [form]="form"></app-email>
-        <app-password [form]="form"></app-password>
+        <app-email
+                [form]="form"
+                [config]="false"
+        ></app-email>
+        <app-password
+                [form]="form"
+                [config]="false"
+        ></app-password>
         <input
                 type=submit
                 routerLink="/main"

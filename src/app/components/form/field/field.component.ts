@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, ViewChild} from '@angular/core';
 import {DynamicComponentsLoadDirective} from "../../../directives/dynamic-components-load.directive";
 import {DynamicComponentsMappingService} from "../../../services/dynamic-components-mapping.service";
 import {BaseFieldComponent} from "../../fields/base-field/base-field.component";
