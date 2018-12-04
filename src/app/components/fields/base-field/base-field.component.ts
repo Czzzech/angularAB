@@ -16,22 +16,23 @@ export class BaseFieldComponent implements OnInit {
     component : 'BaseFieldComponent',
     key : 'field',
     title : 'BaseField',
-    icon : 'base'
+    icon : 'base',
+    disabled : true
   };
 
   constructor() { }
 
   ngOnInit() {
+    if(this.config === false){
+      this.config = this.defaultConfig;
+    }
     this.field = new FormControl(
-        ""
+        {value: "", disabled: this.config.disabled}
     );
     this.group = new FormGroup({
       field: this.field
     });
     this.form.addControl(this.config.key, this.group);
-    if(this.config === false){
-      this.config = this.defaultConfig;
-    }
   }
 
   hasErrors(){
@@ -40,6 +41,17 @@ export class BaseFieldComponent implements OnInit {
 
   noErrors(){
     return !this.field.errors && (this.field.dirty || this.field.touched);
+  }
+
+  valid(key?: string){
+    switch (key){
+      case 'pattern':
+        return !this.field.errors.pattern;
+      case 'required':
+        return !this.field.errors.required;
+      default:
+        return !this.field.invalid;
+    }
   }
 
 }

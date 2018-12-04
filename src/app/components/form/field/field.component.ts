@@ -22,7 +22,6 @@ export class FieldComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.getComponent());
 
     let viewContainerRef = this.componentsLoadDirective.viewContainerRef;
@@ -31,6 +30,7 @@ export class FieldComponent implements OnInit {
     let componentRef = viewContainerRef.createComponent(componentFactory);
     (<BaseFieldComponent>componentRef.instance).config = this.config;
     (<BaseFieldComponent>componentRef.instance).form = this.form;
+
   }
 
   getComponent() {

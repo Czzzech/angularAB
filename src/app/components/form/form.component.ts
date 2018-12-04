@@ -1,5 +1,5 @@
 import {
-  Component, ComponentRef, OnInit,
+  Component, OnInit,
 } from '@angular/core';
 import {FormGroup} from "@angular/forms";
 
@@ -17,6 +17,12 @@ export class FormComponent implements OnInit {
 
   ngOnInit(){
 
+  }
+
+  visibleFields(){
+    return this.fieldsConfig.filter(field =>
+        field.visible !== false
+    );
   }
 
 }

@@ -3,7 +3,7 @@
         <div
                 class="col-lg-6 col-sm-12"
                 app-field
-                *ngFor="let fieldConfig of fieldsConfig"
+                *ngFor="let fieldConfig of visibleFields()"
                 [config]="fieldConfig"
                 [form]="form"
         ></div>

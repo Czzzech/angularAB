@@ -3,6 +3,7 @@ import {WishlistTitleColumnComponent} from "../components/grid/grid-columns/wish
 import {DescriptionColumnComponent} from "../components/grid/grid-columns/description-column/description-column.component";
 import {TextFieldComponent} from "../components/fields/text-field/text-field.component";
 import {DateFieldComponent} from "../components/fields/date-field/date-field.component";
+import {TextAreaComponent} from "../components/fields/text-area/text-area.component";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class DynamicComponentsMappingService {
     WishlistTitleColumnComponent : WishlistTitleColumnComponent,
     DescriptionColumnComponent : DescriptionColumnComponent,
     TextFieldComponent : TextFieldComponent,
-    DateFieldComponent : DateFieldComponent
+    DateFieldComponent : DateFieldComponent,
+    TextAreaComponent : TextAreaComponent
   };
 
   constructor() { }

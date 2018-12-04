@@ -14,7 +14,8 @@ export class EmailComponent extends BaseFieldComponent implements OnInit{
     component : 'EmailComponent',
     key : 'email',
     title : 'E-mail',
-    icon : 'at'
+    icon : 'at',
+    disabled : false
   };
   constructor() {
     super();
@@ -26,17 +27,6 @@ export class EmailComponent extends BaseFieldComponent implements OnInit{
       Validators.required,
       Validators.pattern('^[a-zA-z0-9._~!@#$%^&*()\+]+@[a-zA-z0-9._~!@#$%^&*()\+]{1,10}\.[a-zA-z0-9]{2,10}$')
     ]);
-  }
-
-  valid(key?: string){
-    switch (key){
-      case 'pattern':
-        return !this.field.errors.pattern;
-      case 'required':
-        return !this.field.errors.required;
-      default:
-        return !this.field.invalid;
-    }
   }
 
 }

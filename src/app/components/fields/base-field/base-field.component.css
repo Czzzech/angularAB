@@ -1,21 +1,33 @@
 .valid{
-    box-shadow: 0px 0px 8px rgba(0, 150, 0, 0.87) !important;
-    background-color: rgba(40, 167, 36, 0.7);
-    border-color: rgba(36, 255, 36, 0.52);
+    border-color: #00ff00 !important;
+    //box-shadow: 0px 0px 6px rgb(0, 255, 0) !important;
 }
 
 .invalid{
-    box-shadow: 0px 0px 8px rgba(255, 9, 5, 0.82) !important;
-    background-color: rgba(255, 0, 15, 0.54);
-    border-color: rgba(255, 0, 15, 0.76);
+    border-color: #ff0000 !important;
+    //box-shadow: 0px 0px 6px rgb(255, 10, 0) !important;
 }
 
 .form-control{
-    background-color: transparent;
+    background-color: #343a40;
     box-shadow: none;
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
     color: white;
+    border-left: none;
+    border-right: 1px solid #ffc107;
+    border-bottom: 1px solid #ffc107;
+    border-top: 1px solid #ffc107;
+    height: auto;
+}
+
+.form-control:focus{
+    background-color: #282f35 !important;
+}
+
+.form-control:disabled{
+    background-color: #4d555c !important;
+    border-color: #6c757d !important;
 }
 
 .confirm {
@@ -23,7 +35,8 @@
 }
 
 .input-group-prepend{
-    width: 175px;
+    width: 150px;
+    margin-right: 0px;
 }
 
 span{

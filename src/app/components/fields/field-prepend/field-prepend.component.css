@@ -1,26 +1,35 @@
 span{
     justify-content: center;
     background-color: #6c757d;
+    border: none;
 }
 
 .input-group-text{
     width: 100%;
     padding: .375rem .25rem;
+    border-right: none;
+    border-left: 1px solid #ffc107;
+    border-bottom: 1px solid #ffc107;
+    border-top: 1px solid #ffc107;
+}
+
+.text-dark{
+    border-color: #9da7af !important;
 }
 
 .valid-icon{
-    box-shadow: 0px 0px 8px rgba(0, 150, 0, 0.5)!important;
-    border-color: rgba(36, 255, 36, 0.52);;
+    border-color: #00ff00;
+    //box-shadow: 0px 0px 8px rgb(30, 199, 1) !important;
 }
 
 .field-title{
     background-color: transparent;
+    white-space: initial;
 }
 
 .invalid-icon{
-    box-shadow: 0px 0px 8px rgba(255, 9, 5, 0.9) !important;
-    background-color: rgba(255, 0, 15, 0.55);
-    border-color: rgba(255, 0, 15, 0.84);
+    border-color: #ff0000;
+    //box-shadow: 0px 0px 8px rgba(255, 9, 5, 0.9) !important;
 }
 
 .icon-border{

@@ -1,9 +1,14 @@
 
 <span
-        class="input-group-text text-warning"
+        class="input-group-text"
         id="icon"
-        title="{{ config.key }}"
-        [ngClass]="{'valid-icon': noErrors(), 'invalid-icon' : hasErrors()}"
+        title="{{ config.description }}"
+        [ngClass]="{
+          'valid-icon': noErrors(),
+          'invalid-icon' : hasErrors(),
+          'text-dark': config.disabled,
+          'text-warning' : !config.disabled
+        }"
 >
   <span class="icon-border" *ngIf="config.icon"><i class="fa fa-{{ config.icon }}"></i></span>
   <span class="field-title" [ngClass]="{'w-100':config.icon}">{{ config.title }}</span>

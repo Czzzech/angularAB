@@ -8,7 +8,7 @@
 }
 .modal-content{
     border-radius: 7px;
-    box-shadow: 0px 0px 8px rgba(255, 180, 11, 0.7);
+    box-shadow: 0px 0px 10px rgb(255, 180, 11);
 }
 
 .modal-header{
@@ -21,9 +21,9 @@
 }
 
 .modal-content.valid{
-    box-shadow: 0px 0px 8px rgba(0, 173, 0, 0.84);
+    box-shadow: 0px 0px 10px rgb(0, 249, 0);
 }
 
 .modal-content.invalid{
-    box-shadow: 0px 0px 8px rgba(255, 9, 5, 0.81);
+    box-shadow: 0px 0px 10px rgb(255, 9, 5);
 }

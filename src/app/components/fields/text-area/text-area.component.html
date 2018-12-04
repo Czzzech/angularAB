@@ -1,0 +1,30 @@
+<div [formGroup]="group" class="form-group input-group mb-3">
+  <div
+          class="input-group-prepend"
+          app-field-prepend
+          [config]="config"
+          [field]="field"
+  ></div>
+  <textarea #textarea
+          class="form-control"
+          placeholder="{{ config.title === undefined ? config.key : config.title }}"
+          aria-label="Text"
+          aria-describedby="icon"
+          formControlName="field"
+          [ngClass]="{'valid': noErrors(), 'invalid' : hasErrors()}"
+  ></textarea>
+</div>
+<ul *ngIf="hasErrors()" class="list-unstyled text-left">
+  <li
+          *ngIf="config.required" [ngStyle]="{'color' : valid('required') ? 'green' : 'red'}"
+  ><i
+          class="fa"
+          [ngClass]="{'fa-times' : !valid('required'), 'fa-check' : valid('required')}"
+  ></i> {{ config.title }} must be not empty!</li>
+  <li
+          *ngIf="config.pattern" [ngStyle]="{'color' : valid('pattern') ? 'green' : 'red'}"
+  ><i
+          class="fa"
+          [ngClass]="{'fa-times' : !valid('pattern'), 'fa-check' : valid('pattern')}"
+  ></i> {{ config.pattern.errorText }}</li>
+</ul>

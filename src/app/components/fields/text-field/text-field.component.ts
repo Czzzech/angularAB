@@ -15,7 +15,16 @@ export class TextFieldComponent extends BaseFieldComponent {
 
   ngOnInit(){
     super.ngOnInit();
-    this.field.setValidators([Validators.required])
+
+    let validators = [];
+
+    if(this.config.required)
+      validators.push(Validators.required);
+
+    if(this.config.pattern)
+      validators.push(Validators.pattern(this.config.pattern.match));
+
+    this.field.setValidators(validators)
   }
 
 }

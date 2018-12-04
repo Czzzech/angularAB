@@ -16,14 +16,16 @@ export class PasswordComponent extends BaseFieldComponent implements OnInit{
     component : 'PasswordComponent',
     key : 'password',
     title : 'Password',
-    icon : 'key'
+    icon : 'key',
+    disabled : false
   };
 
   configConfirm = {
     component : 'PasswordComponent',
     key : 'confirmPassword',
     title : 'Confirm Password',
-    icon : 'key'
+    icon : 'key',
+    disabled : false
   };
 
   @Input('passwordConfirm') needConfirm : boolean;
@@ -65,12 +67,32 @@ export class PasswordComponent extends BaseFieldComponent implements OnInit{
 
   confirmEquals(){
     if(!this.needConfirm) return true;
-    return (this.field.value.length > 0) && (this.field.value === this.passwordConfirm.value) && (this.field.dirty || this.field.touched);
+    return (this.field.value === this.passwordConfirm.value) && (this.field.dirty || this.field.touched);
   }
 
   confirmNotEquals(){
     if(!this.needConfirm) return false;
     return !(this.field.value === this.passwordConfirm.value) && (this.field.dirty || this.field.touched);
+  }
+
+  validConfirm(){
+    if(!this.needConfirm) return true;
+    return !this.passwordConfirm.errors && (this.passwordConfirm.dirty || this.passwordConfirm.touched) && this.confirmEquals();
+  }
+
+  invalidConfirm(){
+    if(!this.needConfirm) return false;
+    return (this.confirmNotEquals() || this.passwordConfirm.errors) && (this.passwordConfirm.dirty || this.passwordConfirm.touched);
+  }
+
+  validLengthConfirm(){
+    if(!this.needConfirm) return true;
+    return !this.passwordConfirm.errors && (this.passwordConfirm.dirty || this.passwordConfirm.touched);
+  }
+
+  invalidLengthConfirm(){
+    if(!this.needConfirm) return false;
+    return this.passwordConfirm.errors && (this.passwordConfirm.dirty || this.passwordConfirm.touched);
   }
 
   valid(key?: string){

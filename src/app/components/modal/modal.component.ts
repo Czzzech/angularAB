@@ -24,7 +24,6 @@ export class ModalComponent implements OnInit, AfterViewInit {
   isValid(value){
     if(!this.rendered)
       return;
-    console.log(value);
     switch (value){
       case 'INVALID':
         this.invalid = true;
