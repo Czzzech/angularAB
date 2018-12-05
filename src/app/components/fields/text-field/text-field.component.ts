@@ -9,6 +9,15 @@ import {Validators} from "@angular/forms";
 })
 export class TextFieldComponent extends BaseFieldComponent {
 
+  defaultConfig = {
+    component : 'TextFieldComponent',
+    key : 'text',
+    title : 'Text',
+    icon : 'text',
+    required : false,
+    disabled : false
+  };
+
   constructor() {
     super();
   }
@@ -24,7 +33,19 @@ export class TextFieldComponent extends BaseFieldComponent {
     if(this.config.pattern)
       validators.push(Validators.pattern(this.config.pattern.match));
 
-    this.field.setValidators(validators)
+    this.field.setValidators(validators);
+  }
+
+  checkInput(event){
+    this.field.markAsTouched();
+    this.field.markAsDirty();
+    if(this.config.pattern !== undefined && this.config.pattern.inputCheck) {
+      let regex = new RegExp(this.config.pattern.match);
+      let valueForTest = this.field.value.length > 0 ? this.field.value + event.key : event.key;
+      if(!regex.exec(valueForTest)){
+        event.preventDefault();
+      }
+    }
   }
 
 }

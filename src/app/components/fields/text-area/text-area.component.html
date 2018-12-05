@@ -6,12 +6,13 @@
           [field]="field"
   ></div>
   <textarea #textarea
-          class="form-control"
-          placeholder="{{ config.title === undefined ? config.key : config.title }}"
-          aria-label="Text"
-          aria-describedby="icon"
-          formControlName="field"
-          [ngClass]="{'valid': noErrors(), 'invalid' : hasErrors()}"
+            class="form-control"
+            placeholder="{{ config.title === undefined ? config.key : config.title }}"
+            aria-label="Text"
+            aria-describedby="icon"
+            formControlName="field"
+            [ngClass]="{'valid': noErrors(), 'invalid' : hasErrors()}"
+            (keypress)="checkInput($event)"
   ></textarea>
 </div>
 <ul *ngIf="hasErrors()" class="list-unstyled text-left">

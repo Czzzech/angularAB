@@ -14,6 +14,7 @@
             aria-describedby="iconEmail"
             formControlName="field"
             [ngClass]="{'valid': noErrors(), 'invalid' : hasErrors()}"
+            (keypress)="checkInput($event)"
     >
 </div>
 <ul *ngIf="hasErrors()" class="list-unstyled text-left">
@@ -22,11 +23,11 @@
   ><i
           class="fa"
           [ngClass]="{'fa-times' : !valid('required'), 'fa-check' : valid('required')}"
-  ></i> Email must be not empty!</li>
+  ></i> {{ config.title }} must be not empty</li>
   <li
           [ngStyle]="{'color' : valid('pattern') ? 'green' : 'red'}"
   ><i
           class="fa"
           [ngClass]="{'fa-times' : !valid('pattern'), 'fa-check' : valid('pattern')}"
-  ></i> Email must be something like: xx@xx.xx!</li>
+  ></i> {{ config.pattern.errorText }}</li>
 </ul>

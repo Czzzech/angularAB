@@ -13,6 +13,7 @@
             aria-describedby="icon"
             formControlName="field"
             [ngClass]="{'valid': noErrors(), 'invalid' : hasErrors()}"
+            (keypress)="checkInput($event)"
     >
 </div>
 <ul *ngIf="hasErrors()" class="list-unstyled text-left">
