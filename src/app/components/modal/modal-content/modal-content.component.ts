@@ -13,6 +13,7 @@ export class ModalContentComponent implements OnInit {
 
   @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
   @Input() config : any;
+  @Input() data : any = false;
   @Output('valid') validChangeEmitter : EventEmitter<string> = new EventEmitter();
 
   constructor(
@@ -23,8 +24,7 @@ export class ModalContentComponent implements OnInit {
     if(this.config.type === 'form') {
 
       let form = new FormGroup({});
-      form.statusChanges
-          .subscribe(val => this.onValid(val));
+      form.statusChanges.subscribe(val => this.onValid(val));
 
       let componentFactory = this.componentFactoryResolver.resolveComponentFactory(FormComponent);
 
@@ -33,6 +33,8 @@ export class ModalContentComponent implements OnInit {
       let componentRef = this.vc.createComponent(componentFactory);
       componentRef.instance.fieldsConfig = this.config.formConfig;
       componentRef.instance.form = form;
+      if(this.data !== false)
+        componentRef.instance.model = this.data;
 
     }else{
       //TODO: custom modal content

@@ -1,3 +1,7 @@
 .grid-container{
     text-align: center;
 }
+
+.grid-row{
+    cursor: pointer;
+}

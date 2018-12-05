@@ -8,10 +8,13 @@
             ></tr>
         </thead>
         <tbody>
-            <tr app-grid-item
+            <tr
+                class="grid-row"
+                app-grid-item
                 *ngFor="let item of data"
                 [item]="item"
                 [config]="config"
+                (click)="openModal(item.id)"
             ></tr>
         </tbody>
     </table>

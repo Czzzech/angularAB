@@ -1,7 +1,7 @@
 <td
         app-grid-cell
-        *ngFor="let key of getKeys(item);"
-        [value]="item[key]"
+        *ngFor="let key of getKeys(drawItem);"
+        [value]="drawItem[key]"
         [key]="key"
         [config]="config"
   ></td>

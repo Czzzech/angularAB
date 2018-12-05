@@ -6,6 +6,7 @@
                 *ngFor="let fieldConfig of visibleFields()"
                 [config]="fieldConfig"
                 [form]="form"
+                [value]="model[fieldConfig.key]"
         ></div>
     </div>
 </form>

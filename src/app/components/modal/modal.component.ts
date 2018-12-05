@@ -9,6 +9,7 @@ export class ModalComponent implements OnInit, AfterViewInit {
 
   id : string;
   config : any;
+  data : any;
 
   valid: boolean = false;
   invalid: boolean = false;
@@ -39,7 +40,15 @@ export class ModalComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    if(this.data){
+      this.titlePatternReplace()
+    }
+  }
 
+  titlePatternReplace(){
+    for(let key in this.data){
+      this.config.header.title = this.config.header.title.replace('{' + key + '}', this.data[key]);
+    }
   }
 
 }

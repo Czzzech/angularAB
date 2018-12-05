@@ -12,6 +12,7 @@ import {GridConfig} from "../../../interfaces/GridConfig";
  */
 export class GridItemComponent implements OnInit {
 
+  drawItem : any = {};
   @Input() item: any;
   @Input() config: GridConfig;
 
@@ -19,8 +20,8 @@ export class GridItemComponent implements OnInit {
 
   ngOnInit() {
     this.config.columns.forEach(fieldConfig => {
-      if(!fieldConfig.show){
-        delete this.item[fieldConfig.key];
+      if(fieldConfig.show){
+        this.drawItem[fieldConfig.key] = this.item[fieldConfig.key];
       }
     });
   }

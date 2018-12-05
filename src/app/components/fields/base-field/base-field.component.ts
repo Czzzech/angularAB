@@ -12,6 +12,7 @@ export class BaseFieldComponent implements OnInit {
   public group : FormGroup;
   @Input() form: FormGroup;
   @Input() config: any = false;
+  @Input() value: any = "";
   defaultConfig = {
     component : 'BaseFieldComponent',
     key : 'field',
@@ -27,7 +28,7 @@ export class BaseFieldComponent implements OnInit {
       this.config = this.defaultConfig;
     }
     this.field = new FormControl(
-        {value: "", disabled: this.config.disabled}
+        {value: this.value, disabled: this.config.disabled}
     );
     this.group = new FormGroup({
       field: this.field

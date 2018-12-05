@@ -13,6 +13,7 @@ export class WishlistComponent implements OnInit {
 
   wishes: Wish[] = [];
   gridConfig: GridConfig = {
+    model       : 'wishes',
     component   : 'wishlist',
     title       : 'Wish List',
     columns     : [],

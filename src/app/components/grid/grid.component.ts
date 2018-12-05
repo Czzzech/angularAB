@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GridConfig } from "../../interfaces/GridConfig";
 import { Grid } from "../../interfaces/Grid";
+import {ModalService} from "../../services/modal.service";
 
 @Component({
   selector: 'app-grid',
@@ -9,14 +10,20 @@ import { Grid } from "../../interfaces/Grid";
 })
 export class GridComponent implements OnInit, Grid {
 
-  @Input() data: any[] = [];
+  @Input() data: any;
   @Input() config: GridConfig;
   @Input() drawColumns: [];
 
-  constructor() { }
+  constructor(
+      private modalService: ModalService
+  ) { }
 
   ngOnInit() {
 
+  }
+
+  openModal(id){
+    this.modalService.open(this.config.model, id);
   }
 
 }

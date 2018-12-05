@@ -11,7 +11,7 @@ import {FormGroup} from "@angular/forms";
 })
 export class FieldComponent implements OnInit {
 
-  @Input() value: any;
+  @Input() value: any = "";
   @Input() form: FormGroup;
   @Input() config: any;
   @ViewChild(DynamicComponentsLoadDirective) componentsLoadDirective: DynamicComponentsLoadDirective;
@@ -30,6 +30,7 @@ export class FieldComponent implements OnInit {
     let componentRef = viewContainerRef.createComponent(componentFactory);
     (<BaseFieldComponent>componentRef.instance).config = this.config;
     (<BaseFieldComponent>componentRef.instance).form = this.form;
+    (<BaseFieldComponent>componentRef.instance).value = this.value;
 
   }
 
