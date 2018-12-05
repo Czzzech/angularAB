@@ -11,6 +11,7 @@ import {FormGroup} from "@angular/forms";
 })
 export class ModalContentComponent implements OnInit {
 
+  form: FormGroup;
   @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
   @Input() config : any;
   @Input() data : any = false;
@@ -23,8 +24,8 @@ export class ModalContentComponent implements OnInit {
   ngOnInit(){
     if(this.config.type === 'form') {
 
-      let form = new FormGroup({});
-      form.statusChanges.subscribe(val => this.onValid(val));
+      this.form = new FormGroup({});
+      this.form.statusChanges.subscribe(val => this.onValid(val));
 
       let componentFactory = this.componentFactoryResolver.resolveComponentFactory(FormComponent);
 
@@ -32,7 +33,7 @@ export class ModalContentComponent implements OnInit {
 
       let componentRef = this.vc.createComponent(componentFactory);
       componentRef.instance.fieldsConfig = this.config.formConfig;
-      componentRef.instance.form = form;
+      componentRef.instance.form = this.form;
       if(this.data !== false)
         componentRef.instance.model = this.data;
 

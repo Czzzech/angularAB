@@ -22,8 +22,8 @@ export class GridComponent implements OnInit, Grid {
 
   }
 
-  openModal(id){
-    this.modalService.open(this.config.model, id);
+  openModal(item){
+    this.modalService.open(this.config.model, item);
   }
 
 }

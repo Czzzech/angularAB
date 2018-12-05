@@ -16,25 +16,27 @@ export class ModalService {
       private api: ApiService
   ) { }
 
-  open(modelString, id = 'new'){
+  open(modelString, item : any|boolean = false){
+    let id  = 'new';
+    if(item !== false)
+      id = item.id;
+
     if(id in this.activeModals)
       return;
 
     this.api.query('get', modelString + '/modalcfg').subscribe(modalConfig => {
       let config = modalConfig;
-      if(id === 'new'){
-        config.header.title = config.header.titleForNew;
-        this.createModalComponent(id, config);
-      }else{
-        this.api.query('get', modelString + '/' + id).subscribe(model => {
-          this.createModalComponent(id, config, model);
-        });
-      }
-    });
 
+      if(id === 'new')
+        config.header.title = config.header.titleForNew;
+
+      this.createModalComponent(id, config, item);
+
+    });
   }
 
-  createModalComponent(id, config, data = false){
+  createModalComponent(id, config, data){
+
     // 1. Create a component reference from the component
     let componentRef = this.componentFactoryResolver
         .resolveComponentFactory(ModalComponent)
@@ -82,12 +84,4 @@ export class ModalService {
     delete this.activeModals[id];
   }
 
-  getFieldFromPattern(str) {
-  let results = [], re = /{([^}]+)}/g, text;
-
-  while(text = re.exec(str)) {
-    results.push(text[1]);
-  }
-  return results.length > 0 ? (results.length > 1 ? results : results[0]) : str;
-}
 }

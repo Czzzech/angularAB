@@ -7,6 +7,7 @@
               [config]="config.header"
       ></div>
       <div
+              #content
               app-modal-content
               class="modal-body"
               [config]="config.content"
@@ -17,6 +18,7 @@
               app-modal-footer
               class="modal-footer bg-{{ config.footer.bg }}"
               [config]="config.footer"
+              (action)="action($event)"
       ></div>
     </div>
   </div>

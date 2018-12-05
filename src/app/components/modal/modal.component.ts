@@ -1,4 +1,5 @@
-import {AfterViewInit, Component, HostBinding, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {ModalContentComponent} from "./modal-content/modal-content.component";
 
 @Component({
   selector: '[app-modal]',
@@ -10,6 +11,7 @@ export class ModalComponent implements OnInit, AfterViewInit {
   id : string;
   config : any;
   data : any;
+  @ViewChildren( ModalContentComponent ) contentComponent : QueryList<ModalContentComponent>;
 
   valid: boolean = false;
   invalid: boolean = false;
@@ -49,6 +51,10 @@ export class ModalComponent implements OnInit, AfterViewInit {
     for(let key in this.data){
       this.config.header.title = this.config.header.title.replace('{' + key + '}', this.data[key]);
     }
+  }
+
+  action(action){
+    console.log(this.contentComponent);
   }
 
 }

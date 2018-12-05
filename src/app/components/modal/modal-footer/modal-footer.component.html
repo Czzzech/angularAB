@@ -1,5 +1,6 @@
 <button
         *ngFor="let button of config.buttons"
         class="btn {{ button.class }}"
+        (click)="click(button.action)"
 
 >{{ button.text }}</button>
