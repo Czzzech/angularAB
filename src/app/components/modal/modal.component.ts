@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ModalContentComponent} from "./modal-content/modal-content.component";
 
 @Component({
@@ -11,12 +11,13 @@ export class ModalComponent implements OnInit, AfterViewInit {
   id : string;
   config : any;
   data : any;
-  @ViewChildren( ModalContentComponent ) contentComponent : QueryList<ModalContentComponent>;
+  @ViewChild( ModalContentComponent ) contentComponent : ModalContentComponent;
 
   valid: boolean = false;
   invalid: boolean = false;
 
   rendered : boolean = false;
+  changes : boolean = false;
 
   constructor() { }
 
@@ -54,7 +55,15 @@ export class ModalComponent implements OnInit, AfterViewInit {
   }
 
   action(action){
-    console.log(this.contentComponent);
+    let field : string;
+    let formObject = this.contentComponent.form.getRawValue();
+    for (field in formObject){
+      if(this.data[field] !== undefined && this.data[field] !== formObject[field].field){
+        this.changes = true;
+        this.data[field] = formObject[field].field;
+      }
+    }
+    console.log(this.data);
   }
 
 }

@@ -33,15 +33,7 @@ export class WishlistComponent implements OnInit {
           });
           this.wishesService.getWishes().subscribe(wishes => {
               wishes.forEach(wish => {
-                  this.wishes.push({
-                      id : parseFloat(wish.id),
-                      title : wish.title,
-                      description : wish.description,
-                      price : wish.price,
-                      order : wish.order,
-                      completed : (new Date(wish.completed)).toDateString(),
-                      periodically : wish.periodically
-                  });
+                  this.wishes = wishes;
               });
           },
           err => console.error(err),
