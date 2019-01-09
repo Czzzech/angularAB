@@ -48,6 +48,12 @@ import { BaseFieldComponent } from './components/fields/base-field/base-field.co
 import { FieldComponent } from './components/form/field/field.component';
 import { FieldPrependComponent } from './components/fields/field-prepend/field-prepend.component';
 import { TextAreaComponent } from './components/fields/text-area/text-area.component';
+import { DraggableDirective } from './directives/draggable.directive';
+import { DraggableAreaDirective } from './directives/draggable-area.directive';
+import { SortableDirective } from './directives/sortable.directive';
+import { SortableListDirective } from './directives/sortable-list.directive';
+import { DraggableHelperDirective } from './directives/draggable-helper.directive';
+import {OverlayModule} from "@angular/cdk/overlay";
 
 @NgModule({
   declarations: [
@@ -91,7 +97,12 @@ import { TextAreaComponent } from './components/fields/text-area/text-area.compo
     BaseFieldComponent,
     FieldComponent,
     FieldPrependComponent,
-    TextAreaComponent
+    TextAreaComponent,
+    DraggableDirective,
+    DraggableAreaDirective,
+    SortableDirective,
+    SortableListDirective,
+    DraggableHelperDirective
   ],
   entryComponents: [
     GridBaseColumnComponent,
@@ -105,6 +116,7 @@ import { TextAreaComponent } from './components/fields/text-area/text-area.compo
   ],
   imports: [
     BrowserModule,
+    OverlayModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
