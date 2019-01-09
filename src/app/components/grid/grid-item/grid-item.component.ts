@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GridConfig} from "../../../interfaces/GridConfig";
+import {SortableListDirective} from "../../../directives/sortable-list.directive";
 
 @Component({
   selector: '[app-grid-item]',
@@ -15,6 +16,7 @@ export class GridItemComponent implements OnInit {
   drawItem : any = {};
   @Input() item: any;
   @Input() config: GridConfig;
+
 
   constructor() { }
 

@@ -2,11 +2,15 @@
     text-align: center;
 }
 
+.table{
+
+}
+
 .dragging{
     border: 1px transparent;
     box-shadow: 0px 0px 9px rgb(255, 251, 103);
     border-radius: 5px;
-    background-color: #fffb67;
+    background-color: #fae73e !important;
 }
 
 .grid-row{

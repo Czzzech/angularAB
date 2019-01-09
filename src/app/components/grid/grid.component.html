@@ -1,16 +1,16 @@
 <div class="grid-container">
     <app-grid-summary></app-grid-summary>
-    <table class="table bg-warning text-dark">
+    <table class="table bg-dark text-dark table-borderless">
         <thead>
             <tr
                 app-grid-header
                 [config]="drawColumns"
             ></tr>
         </thead>
-        <tbody appDraggableArea appSortableList (sort)="sort($event)">
+        <tbody appDraggableArea appSortableList (dragEnd)="sortFinished = true;" (sort)="sort($event)">
             <tr
                 appSortable
-                class="grid-row"
+                class="grid-row bg-warning"
                 app-grid-item
                 *ngFor="let item of data"
                 [item]="item"

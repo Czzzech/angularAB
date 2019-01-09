@@ -1,4 +1,4 @@
-import {AfterContentInit, ContentChildren, Directive, ElementRef, QueryList} from '@angular/core';
+import {AfterContentInit, ContentChildren, Directive, ElementRef, EventEmitter, Output, QueryList} from '@angular/core';
 import {DraggableDirective} from "./draggable.directive";
 import {SortableDirective} from "./sortable.directive";
 import {SortableListDirective} from "./sortable-list.directive";
@@ -42,7 +42,6 @@ export class DraggableAreaDirective implements AfterContentInit{
   }
 
   private measureBoundaries(draggable: DraggableDirective): void {
-    console.log(this.element.nativeElement);
     const parentRect: ClientRect = this.element.nativeElement.getBoundingClientRect();
     const draggableRect: ClientRect = draggable.element.nativeElement.getBoundingClientRect();
 
@@ -52,7 +51,6 @@ export class DraggableAreaDirective implements AfterContentInit{
       minY: parentRect.top - draggableRect.top,
       maxY: parentRect.bottom - draggableRect.bottom,
     };
-    console.log(this.boundaries);
   }
 
   private maintainBoundaries(draggable: DraggableDirective): void {

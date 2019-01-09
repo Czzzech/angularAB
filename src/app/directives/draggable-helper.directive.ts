@@ -17,7 +17,7 @@ export class DraggableHelperDirective implements OnInit, OnDestroy{
   ) { }
 
   private overlayRef: OverlayRef;
-  private positionStrategy = new GlobalPositionStrategy(document);
+  private positionStrategy = new GlobalPositionStrategy();
   private startPosition = {
     x: 0,
     y: 0

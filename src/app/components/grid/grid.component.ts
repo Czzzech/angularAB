@@ -15,6 +15,8 @@ export class GridComponent implements OnInit, Grid {
   @Input() config: GridConfig;
   @Input() drawColumns: [];
 
+  public sorted = false;
+
   constructor(
       private modalService: ModalService
   ) { }
@@ -24,17 +26,20 @@ export class GridComponent implements OnInit, Grid {
   }
 
   openModal(item){
+    if(this.sorted) {
+      this.sorted = false;
+      return;
+    }
     this.modalService.open(this.config.model, item);
   }
 
   sort(event: SortEvent){
-    console.log(event);
+    this.sorted = true;
     const current = this.data[event.currentIndex];
     const swapWith = this.data[event.newIndex];
 
     this.data[event.newIndex] = current;
     this.data[event.currentIndex] = swapWith;
-    console.log(this.data);
   }
 
 }
