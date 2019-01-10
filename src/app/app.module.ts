@@ -54,6 +54,7 @@ import { SortableDirective } from './directives/sortable.directive';
 import { SortableListDirective } from './directives/sortable-list.directive';
 import { DraggableHelperDirective } from './directives/draggable-helper.directive';
 import {OverlayModule} from "@angular/cdk/overlay";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import {OverlayModule} from "@angular/cdk/overlay";
     AppRoutingModule,
     HttpClientModule,
     AngularFontAwesomeModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

@@ -1,6 +1,5 @@
 import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Output} from '@angular/core';
-import {DomSanitizer, SafeStyle} from "@angular/platform-browser";
-import {DraggableHelperDirective} from "./draggable-helper.directive";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Directive({
   selector: '[appDraggable]'
@@ -15,11 +14,11 @@ export class DraggableDirective {
   public startPosition = {x: 0, y: 0};
   private reset = true;
 
-  @HostBinding('style.transform') get transform(): SafeStyle {
+  /*@HostBinding('style.transform') get transform(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustStyle(
         `translateX(${this.position.x}px) translateY(${this.position.y}px)`
     );
-  }
+  }*/
 
   @HostBinding('class.draggable') draggable = true;
   @Output() dragStart = new EventEmitter<PointerEvent>();
@@ -27,9 +26,11 @@ export class DraggableDirective {
   @Output() dragEnd = new EventEmitter<PointerEvent>();
 
   @HostBinding('class.dragging') dragging = false;
+  public dragged = false;
   @HostBinding('class.moveable') moveable = true;
 
   @HostListener('pointerdown', ['$event']) onPointerDown(event: PointerEvent):void {
+    this.dragged = false;
     this.dragging = true;
     this.startPosition = {
       x: event.clientX - this.position.x,
@@ -42,6 +43,7 @@ export class DraggableDirective {
   @HostListener('document:pointermove', ['$event']) onPointerMove(event: PointerEvent):void {
     if(!this.dragging)
       return;
+    this.dragged = true;
     this.position.x = event.clientX - this.startPosition.x;
     this.position.y = event.clientY - this.startPosition.y;
     this.dragMove.emit(event);

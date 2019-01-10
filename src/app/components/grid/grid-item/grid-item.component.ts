@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GridConfig} from "../../../interfaces/GridConfig";
 import {SortableListDirective} from "../../../directives/sortable-list.directive";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: '[app-grid-item]',
@@ -13,10 +14,11 @@ import {SortableListDirective} from "../../../directives/sortable-list.directive
  */
 export class GridItemComponent implements OnInit {
 
+
   drawItem : any = {};
   @Input() item: any;
   @Input() config: GridConfig;
-
+  @Input() helper: boolean;
 
   constructor() { }
 
@@ -29,7 +31,7 @@ export class GridItemComponent implements OnInit {
   }
 
   getKeys(object){
-    return Object.keys(object);
+    return this.helper ? ['title'] : Object.keys(object);
   }
 
 }

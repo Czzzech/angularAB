@@ -1,22 +1,42 @@
 <div class="grid-container">
     <app-grid-summary></app-grid-summary>
-    <table class="table bg-dark text-dark table-borderless">
+    <table class="table bg-dark text-dark table-hover">
         <thead>
             <tr
                 app-grid-header
                 [config]="drawColumns"
             ></tr>
         </thead>
-        <tbody appDraggableArea appSortableList (dragEnd)="sortFinished = true;" (sort)="sort($event)">
+        <tbody
+                appDraggableArea
+                appSortableList
+                (dragClick)="dragged = false;"
+                (dragged)="dragged = true;"
+                (sort)="sort($event)"
+                [@listAnimation]="data.length"
+        >
             <tr
                 appSortable
                 class="grid-row bg-warning"
                 app-grid-item
                 *ngFor="let item of data"
+                [@sorting]="item.sortState"
+                (@sorting.done)="setIdle(item)"
                 [item]="item"
                 [config]="config"
                 (click)="openModal(item)"
             >
+                <div class="draggable-helper-div" *appDraggableHelper [@dragHelperAnimation]="dragHelperAnimationState">
+                    <table class="table text-light draggable-helper-table">
+                        <tr
+                                class="grid-row draggable-helper"
+                                app-grid-item
+                                [helper]="true"
+                                [item]="item"
+                                [config]="config"
+                        ></tr>
+                    </table>
+                </div>
             </tr>
         </tbody>
     </table>

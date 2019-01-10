@@ -1,9 +1,12 @@
-import {AfterContentInit, ContentChildren, Directive, ElementRef, EventEmitter, Output, QueryList} from '@angular/core';
+import {
+  AfterContentInit, ContentChildren, Directive, ElementRef, EventEmitter, Output,
+  QueryList
+} from '@angular/core';
 import {DraggableDirective} from "./draggable.directive";
 import {SortableDirective} from "./sortable.directive";
 import {SortableListDirective} from "./sortable-list.directive";
 
-interface Boundaries {
+export interface Boundaries {
   minX: number;
   maxX: number;
   minY: number;
@@ -20,22 +23,24 @@ export class DraggableAreaDirective implements AfterContentInit{
   private boundaries: Boundaries;
 
   constructor(
-      private element: ElementRef,
-      private sortableList: SortableListDirective
+      public element: ElementRef,
+      private sortableList: SortableListDirective,
   ){}
 
   private measured = false;
 
   ngAfterContentInit(){
-    this.sortableList.sort.subscribe(event => this.measureBoundaries(this.draggables.toArray()[event.newIndex]));
+
+    this.sortableList.sort.subscribe(event =>
+      this.measureBoundaries(this.draggables.toArray()[event.newIndex])
+    );
 
     this.draggables.changes.subscribe(() => {
         this.draggables.forEach(draggable => {
           draggable.dragStart.subscribe(() => this.measureBoundaries(draggable));
-          draggable.dragMove.subscribe(() => this.maintainBoundaries(draggable))
-          draggable.dragEnd.subscribe(() => {this.measured = false;})
-        })
-
+          draggable.dragMove.subscribe(() => this.maintainBoundaries(draggable));
+          draggable.dragEnd.subscribe(() => {this.measured = false;});
+        });
     });
 
     this.draggables.notifyOnChanges();
@@ -53,10 +58,11 @@ export class DraggableAreaDirective implements AfterContentInit{
     };
   }
 
-  private maintainBoundaries(draggable: DraggableDirective): void {
+  private maintainBoundaries(draggable): void {
     draggable.position.x = Math.max(draggable.position.x, this.boundaries.minX);
     draggable.position.x = Math.min(draggable.position.x, this.boundaries.maxX);
     draggable.position.y = Math.max(draggable.position.y, this.boundaries.minY);
     draggable.position.y = Math.min(draggable.position.y, this.boundaries.maxY);
   }
+
 }
