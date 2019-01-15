@@ -10,6 +10,5 @@
           'text-warning' : !config.disabled
         }"
 >
-  <span class="icon-border" *ngIf="config.icon"><i class="fa fa-{{ config.icon }}"></i></span>
-  <span class="field-title" [ngClass]="{'w-100':config.icon}">{{ config.title }}</span>
+  <span *ngIf="config.icon"><i class="fa fa-{{ config.icon }}"></i></span>
 </span>
