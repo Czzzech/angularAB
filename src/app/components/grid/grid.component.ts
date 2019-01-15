@@ -53,7 +53,6 @@ export class GridComponent implements OnInit, Grid {
 
   @Input() data: any;
   @Input() config: GridConfig;
-  @Input() drawColumns: [];
   public sortState = [];
   public dragged = false;
 
@@ -71,7 +70,7 @@ export class GridComponent implements OnInit, Grid {
 
   }
 
-  openModal(item){
+  openModal(item: object): void {
     if(this.dragged) {
       this.dragged = false;
       return;

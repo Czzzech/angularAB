@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Wish } from "../../interfaces/Wish";
-import { GridConfig } from "../../interfaces/GridConfig";
 import {WishesService} from "../../services/wishes.service";
-import {GridColumn} from "../../interfaces/GridColumn";
+import {ModelConfig} from "../../interfaces/ModelConfig";
 
 @Component({
   selector: 'app-wishlist',
@@ -11,30 +10,31 @@ import {GridColumn} from "../../interfaces/GridColumn";
 })
 export class WishlistComponent implements OnInit {
 
-  wishes: Wish[] = [];
-  gridConfig: GridConfig = {
-    model       : 'wishes',
-    component   : 'wishlist',
-    title       : 'Wish List',
-    columns     : [],
-    pagination  : {},
-    filters     : []
+  public wishes: Wish[] = [];
+  public config: ModelConfig = {
+      grid: {
+            model       : 'wishlist',
+            component   : 'WishListComponent',
+            title       : 'Wish List',
+            columns     : [],
+            pagination  : {},
+            filters     : []
+      },
+      modal: {
+          header: {},
+          content: {},
+          footer: {}
+      }
   };
-  gridColumns : GridColumn[] = [];
 
   constructor(private wishesService: WishesService) { }
 
   ngOnInit() {
-      this.wishesService.getColumnsConfig().subscribe(config => {
-          this.gridConfig.columns = config;
-          config.forEach(fieldConfig => {
-              if(fieldConfig.show)
-                  this.gridColumns.push(fieldConfig);
-          });
+      this.wishesService.getConfig().subscribe(config => {
+          this.config = JSON.parse(config);
+          console.log(this.config);
           this.wishesService.getWishes().subscribe(wishes => {
-              wishes.forEach(wish => {
-                  this.wishes = wishes;
-              });
+              this.wishes = wishes.query;
           },
           err => console.error(err),
           () => console.log('wishes loaded'));

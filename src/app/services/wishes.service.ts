@@ -17,7 +17,7 @@ export class WishesService {
       return this.api.query('get', 'wishes');
   }
 
-  getColumnsConfig(){
+  getConfig(){
     return this.api.query('get', 'wishes/config');
   }
 
