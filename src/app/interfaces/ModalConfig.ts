@@ -1,5 +1,5 @@
 export interface ModalConfig{
-    header: any;
-    content: any;
-    footer: any;
+    header: object;
+    content: object;
+    footer: object;
 }

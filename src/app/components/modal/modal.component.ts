@@ -65,5 +65,4 @@ export class ModalComponent implements OnInit, AfterViewInit {
     }
     console.log(this.data);
   }
-
 }
